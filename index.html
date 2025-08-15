@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberSecurity Orientation</title>
+    <base href="assets/" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+        outline: none;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+        background-color: #ffefef;
+        justify-content: center;
+        align-items: center;
+
+        > .card {
+          display: flex;
+          flex-direction: column;
+          padding: 0.5rem;
+          background-color: #ffcfcf;
+          border-radius: 0.25rem;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+
+          > img {
+            /* aspect-ratio: 16/9; */
+            height: 50dvh;
+          }
+
+          > button {
+            padding: 0.25rem;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="card">
+        <h1>Welcome to my randomizer</h1>
+        <img id="img" />
+        <button onclick="random()">Click here to start</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    let n = -1;
+    function random() {
+      const assets = ["test_1", "test_2", "test_3", "test_4", "test_5"];
+      let code = Math.floor(Math.random() * assets.length);
+      while (code == n) {
+        code = Math.floor(Math.random() * assets.length);
+      }
+      const asset = assets[code];
+      n = code;
+      document.getElementById("img").src = asset + ".png";
+    }
+  </script>
+</html>
